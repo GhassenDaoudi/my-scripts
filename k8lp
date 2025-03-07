@@ -1,0 +1,11 @@
+#!/bin/bash
+
+selected_pod=$(kubectl get pods | tail -n +2 | fzf | awk '{print $1}')
+
+# If a pod was selected, log the previous pod
+if [ -n "$selected_pod" ]; then
+  kubectl logs pods/"$selected_pod" --previous
+else
+  echo "No pod selected."
+fi
+
