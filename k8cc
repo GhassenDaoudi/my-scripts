@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# Get the selected context from fzf
 selected_context=$(kubectl config get-contexts -o name | fzf)
 
 # If a context was selected, switch to it

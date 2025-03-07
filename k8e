@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# Get the selected context from fzf
 selected_pod=$(kubectl get pods -o name | fzf)
 
 # If a pod was selected, exec into it
