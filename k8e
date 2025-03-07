@@ -1,6 +1,6 @@
 #!/bin/bash
 
-selected_pod=$(kubectl get pods -o name | fzf)
+selected_pod=$(kubectl get pods | tail -n +2 | fzf | awk '{print $1}')
 
 # If a pod was selected, exec into it
 if [ -n "$selected_pod" ]; then
