@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# Get the selected context from fzf
+selected_pod=$(kubectl get pods -o name | fzf)
+
+# If a pod was selected, exec into it
+if [ -n "$selected_pod" ]; then
+  kubectl exec --stdin --tty "$selected_pod" -- /bin/sh
+else
+  echo "No pod selected."
+fi
+
