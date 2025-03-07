@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# Get the selected context from fzf
+selected_context=$(kubectl config get-contexts -o name | fzf)
+
+# If a context was selected, switch to it
+if [ -n "$selected_context" ]; then
+  kubectl config use-context "$selected_context"
+else
+  echo "No context selected."
+fi
